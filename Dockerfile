@@ -51,5 +51,8 @@ COPY --from=builder /app/packages ./packages
 COPY --from=builder /app/scripts ./scripts
 COPY --from=builder /app/characters ./characters
 
+# Add a volume for dynamic character and env files
+VOLUME ["/app/characters", "/app/.env"]
+
 # Set the command to run the application
 CMD ["pnpm", "start"]
